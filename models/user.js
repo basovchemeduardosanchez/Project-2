@@ -18,5 +18,16 @@ module.exports = function( sequelize, DataTypes ){
             }
         }
     });
+    User.associate = function( models ) {
+        User.hasMany( models.Project, {
+            // TODO: Check if we need anything else here
+            onDelete: 'cascade'
+        } );
+    
+        User.hasMany( models.Task, {
+            // TODO: Check if we need anything else here
+            onDelete: 'cascade'
+        } );
+    };
     return User;
 };

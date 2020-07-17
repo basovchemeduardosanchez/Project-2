@@ -44,6 +44,10 @@ module.exports = function( sequelize, DataTypes ){
                 }
             }
         );
+        Project.hasMany( models.Task, {
+            // TODO: Check if we need anything else here
+            onDelete: 'cascade'
+        } );
     };
 
     return Project;
