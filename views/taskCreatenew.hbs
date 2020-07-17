@@ -1,0 +1,55 @@
+ <section class="pt-5 pb-5" style="background-color: white;">
+        <div class="container">
+          <div class="row d-flex  justify-content-between">
+            <div class="col-md-3 d-md-flex flex-column align-content-center">
+              <h2 class="mb-2 mt-5 ">Task</h2>
+              <p class=" ">Break your project down into bitesized chunks</p>
+              <ul class="list-features  ">
+                <li>Complete the form on the right</li>
+                <li>You will be to assign tasks to inviduals and generate emails to advise them</li>
+                <li>Select start and due dates</li>
+                <li>Then click submit</li>
+              </ul>
+            </div>
+            <div class="col-md-6">
+              <div class="card shadow-lg text-left  ">
+                <div class="card-body" style="background-color: white;color:#002B36">
+                  <form>
+                    <div class="form-group">
+                      <label for="exampleInputName1">Task Name</label>
+                      <input type="text" class="form-control" id="exampleInputName1" placeholder="Title">
+                    </div>
+                    <div class="form-group">
+                      <label for="exampleInputName1">Assigned to</label>
+                      <input type="text" class="form-control" id="exampleInputName1" placeholder="John Doe">
+                    </div>
+                    <div class="textarea-container mt-4">
+                      <label for="exampleInputName1">Task Description</label>
+                      <textarea class="form-control" name="name" rows="2" cols="50" placeholder="What does the task consist of..." style="margin-top: 0px; margin-bottom: 0px; height: 200px;"></textarea>
+                    </div>
+                    <div class="form-group">
+                    <form action="/action_page.php">
+                      <label for="startDate">Start Date:</label>
+                      <input type="date" id="startDate" name="startDate">
+                      <input type="submit">
+                    </form>
+                    </div>
+                  
+                  <div class="form-group">
+                    <form action="/action_page.php">
+                      <label for="dueDate">Due Date:</label>
+                      <input type="date" id="dueDate" name="dueDate">
+                      <input type="submit">
+                    </form>
+                  </div>
+                <p style="text-align: center;">
+                  <a href="./taskCreate.hbs" class="btn btn-primary shadow-lg btn-round mt-2 mr-2 mb-2 ml-0  btn-lg">Add another task</a>
+                  <a href="./taskSubmitted.hbs" class="btn btn-primary shadow-lg btn-round mt-2 mr-2 mb-2 ml-0  btn-lg">Finish</a>
+                 </p>
+                  </form>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
