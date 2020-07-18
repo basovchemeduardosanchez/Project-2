@@ -1,3 +1,6 @@
+
+const db = require('../models');
+
 module.exports = function( app ){ 
     // SECTION Routes
     // TODO: Create your routes here
@@ -14,8 +17,18 @@ module.exports = function( app ){
     } );
 
     app.get( '/projectReport', function( req, res ){
-        
-        res.render( 'projectReport', {} );
+        db.Project.findAll({
+            where: {
+
+            }
+        }).then((result) =>{ 
+
+            res.render( 'projectReport', {projects:result});
+        })
+        // .catch(res, err){
+        //     throw err
+        // })
+    
     } );
 
     app.get( '/taskReport', function( req, res ){
