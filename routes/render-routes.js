@@ -52,4 +52,10 @@ module.exports = function( app ){
 
         res.render( 'taskSubmitted', {} );
     } );
+
+    app.get( '/welcome', function( req, res ){
+
+        res.render( 'welcome', {} );
+    } );
+    
 }
