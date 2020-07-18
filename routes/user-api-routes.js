@@ -13,6 +13,20 @@ module.exports = function ( app ){
             res.json( pResults);
         });
     } );
+    app.get( '/api/users/:id/projects/', function( req, res ){
+        // TODO: Implement route logic
+        // !! Don't forget to send a response
+        db.Project.findAll({
+            where: {
+                UserId: req.params.id
+            },
+            include: [ db.User, db.Task ]
+
+        })
+        .then(function(pResults){
+            res.json( pResults);
+        });
+    } );
 
     app.post( '/api/users/', function( req, res ){
         // TODO: Implement route logic
