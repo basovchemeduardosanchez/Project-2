@@ -29,7 +29,7 @@ require( './routes/user-api-routes.js' )(app);
 // Import Project Routes
 require( './routes/project-api-routes.js' )(app);
 // Import Task Routes
-// require( './routes/task-api-routes.js' )(app);
+require( './routes/task-api-routes.js' )(app);
 db.sequelize.sync( { force:false }).then( function( ){
     // SECTION Express Start
     // !! The PORT variable must be declared above
