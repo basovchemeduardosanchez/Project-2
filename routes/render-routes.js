@@ -7,5 +7,49 @@ module.exports = function( app ){
         // !! This requires Express to have a view engine set
         res.render( 'index', {} );
     } );
-    // !SECTION Routes
+    // 
+    app.get( '/userDashboard', function( req, res ){
+      
+        res.render( 'userDashboard', {} );
+    } );
+
+    app.get( '/projectReport', function( req, res ){
+        
+        res.render( 'projectReport', {} );
+    } );
+
+    app.get( '/taskReport', function( req, res ){
+
+        res.render( 'taskReport', {} );
+    } );
+
+    app.get( '/projectCreate', function( req, res ){
+
+        res.render( 'projectCreate', {} );
+    } );
+
+    app.get( '/login', function( req, res ){
+
+        res.render( 'login', {} );
+    } );
+
+    app.get( '/register', function( req, res ){
+
+        res.render( 'register', {} );
+    } );
+
+    app.get( '/projectSubmitted', function( req, res ){
+
+        res.render( 'projectSubmitted', {} );
+    } );
+
+    app.get( '/taskCreatenew', function( req, res ){
+
+        res.render( 'taskCreatenew', {} );
+    } );
+
+    app.get( '/taskSubmitted', function( req, res ){
+
+        res.render( 'taskSubmitted', {} );
+    } );
 }
