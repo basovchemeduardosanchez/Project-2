@@ -26,15 +26,27 @@ var auth = firebase.auth();
 console.log(firebaseConfig);
 var emailInput = "";  
 var passwordInput = "";
+var nameInput = "";
 //$(".helper-text").css("display", "none");
 $("#regSubmitBtn").on("click", function(){
   emailInput = $("#regEmail").val();
   console.log(emailInput);
   passwordInput = $("#regPassword").val();
   console.log(passwordInput);
+  nameInput = $("#regName").val();
+  console.log(nameInput);
   if (emailInput || passwordInput) {
     firebase.auth().createUserWithEmailAndPassword(emailInput, passwordInput).then((response)=>{
       console.log(response);
+      addUser({
+        "name": $("#regName").val(),
+        "email": $("#regEmail").val()
+    }, (pData)=>{
+       console.log("pData:", pData);
+        localStorage.setItem('currentUserId', pData.id);
+       console.log("pData.Id", pData.id);
+        // window.location.assign('/welcome');
+    });
     }).catch(function(){
     console.log("action verification");
     })
