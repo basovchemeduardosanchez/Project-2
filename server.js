@@ -1,6 +1,8 @@
 const express = require( 'express' );
 const exphbs = require( 'express-handlebars' );
 
+const path = require("path");
+
 // SECTION Express Setup
 const app = express();
 // Use the PORT environment variable if available, otherwise use 8080
@@ -13,12 +15,16 @@ app.use( express.urlencoded( { extended: true } ) );
 app.use( express.json() );
 // !SECTION Express Setup
 
+//Enable access to the images folder
+app.use(express.static('public/images'));
+
 // SECTION Express Handlebars Setup
 // Define the `handlebars` engine in express as the express-handlebars package's main function
 app.engine( 'handlebars', exphbs( { defaultLayout: 'main' } ) );
 // Tell express to use the `handlebars`engine as as its view engine
 app.set( 'view engine', 'handlebars' );
 // !SECTION Express Handlebars Setup
+
 
 
 const db = require( './models' );

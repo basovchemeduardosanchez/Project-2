@@ -1,0 +1,38 @@
+<section class="pt-5 pb-5 bg-dark">
+    <div class="container">
+        <div class="row   justify-content-center header-h100 align-items-center">
+            <div class="col-12 col-md-5 text-center">
+                <div class="card shadow">
+                    <div class="card-body">
+                        <h1 class="display-5  ">Log In</h1>
+                        <input type="text" id="emailLogin" class="form-control mt-5" placeholder="Email">
+                        <input type="password" id="passwordLogin" class="form-control mb-1  mt-4" placeholder="Password">
+                        <a id="submitLogin" class="btn btn-primary btn-lg btn-round mt-5">Submit</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js" type="text/javascript"></script>
+
+<script>
+
+$(document).ready(function(){
+    var emailLogin = $("#emailLogin");
+    var passwordLogin = $("#passwordLogin")
+    var submitLogin = $("#submitLogin");
+    console.log("Hello");
+
+
+    submitLogin.on("click", ()=>{
+        var email = $("#emailLogin").val()
+        var password = $("#passwordLogin").val()
+
+        console.log("Email", email);
+        console.log("Password", password);
+    })
+
+})
+</script>
