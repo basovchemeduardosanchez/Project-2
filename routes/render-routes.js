@@ -8,12 +8,12 @@ module.exports = function( app ){
         // TODO: Implement route logic
         // !! Don't forget to send a response
         // !! This requires Express to have a view engine set
-        res.render( 'index', {} );
+        res.render( 'index', {title: 'Homepage'} );
     } );
     // 
     app.get( '/userDashboard', function( req, res ){
       
-        res.render( 'userDashboard', {} );
+        res.render( 'userDashboard', {title: 'User Dashbord - Roadmap Planner'} );
     } );
 
     app.get( '/projectReport', function( req, res ){

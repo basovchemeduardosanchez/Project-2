@@ -12,9 +12,18 @@
                 <img alt="image" style="max-width:150px;" class="img-fluid mb-4 mt-3 rounded-circle img-rised"
                     src="http://via.placeholder.com/250x250/007bff/ffffff">
                 {{!-- <h3><strong>{{#each projects as | project  projectPosition | }} --}}
-                    <h3><strong>{{#each projects }}
+                    <h3><strong>
+                        {{#each projects}}
+                        <p>This isn't from project-block</p>
+                        {{!-- {{this}} --}}
+                        {{!-- <p>{{name}}</p> --}}
                         {{> projects/project-block}}
-                            {{/each}}
+                        <p>{{name}}</p>
+                        {{!-- {{this}} --}}
+                        {{else}}
+                        <p>No projects available</p>
+                        {{/each}}
+
                 </strong></h3>
                 <p>Position</p>
                 <p>She packed her seven versalia, put her initial into the belt and made herself on the way.</p>
