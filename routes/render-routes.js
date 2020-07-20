@@ -12,8 +12,7 @@ module.exports = function( app ){
     } );
     // 
     app.get( '/userDashboard', function( req, res ){
-      
-        res.render( 'userDashboard', {title: 'User Dashbord - Roadmap Planner'} );
+        res.render( 'userDashboard', {title: 'User Dashboard - Roadmap Planner'} );
     } );
 
     app.get( '/projectReport', function( req, res ){
@@ -37,8 +36,19 @@ module.exports = function( app ){
     } );
 
     app.get( '/projectCreate', function( req, res ){
+        db.User.findAll( {
+            where: {}
+        } )
+            .then( function( pResults ){
+                // !! Sequelize results have a lot of extra attributes, the solution according to https://stackoverflow.com/a/42007460 is to use the .get function as below
+                var lPlainResults = pResults.map( function( pItem ){
+                    return pItem.get( { plain: true } );
+                } );
 
-        res.render( 'projectCreate', {} );
+                res.render( 'projectCreate', {
+                    users: lPlainResults
+                } );
+            }) ;
     } );
 
     app.get( '/login', function( req, res ){
