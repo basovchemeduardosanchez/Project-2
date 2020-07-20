@@ -75,24 +75,43 @@
 
 $(document).ready(function(){
 
+
     console.log("Hey");
 
     var submitBtn = $("#projSubmitBtn")
-
+    
+    
     submitBtn.on("click", ()=>{
-    var title = $("#projCreateTitle").val()
+        
+    var name = $("#projCreateTitle").val()
     var manager = $("#projCreateMan").val()
     var collab = $("#projCreateCollab").val()
     var description = $("#projCreateDes").val()
     var start = $("#projCreateStart").val()
     var due = $("#projCreateDue").val()
+
+    var newProject = {
+        "UserId" : 2,
+        "name" : name,
+        "description" : description,
+        "startDate" : start,
+        "dueDate" : due,
+        "warningDate": due,
+        "estimatedDate" : due,
+    }
+
+    addProject(newProject, () =>{
+        console.log("Data sent")
+    });
     
-    console.log("title", title)
+    
+    console.log("title", name)
     console.log("manager", manager)
     console.log("collab", collab)
     console.log("description", description)
     console.log("start", start)
     console.log("due", due)
+
     })
 
 })

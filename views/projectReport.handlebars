@@ -8,32 +8,27 @@
             </div>
         </div>
         <div class="row text-center mt-md-5">
+            {{#each projects}}
             <div class="col-md-3 mb-5 col-12">
                 <img alt="image" style="max-width:150px;" class="img-fluid mb-4 mt-3 rounded-circle img-rised"
                     src="http://via.placeholder.com/250x250/007bff/ffffff">
                 {{!-- <h3><strong>{{#each projects as | project  projectPosition | }} --}}
-                    <h3><strong>{{#each projects }}
-                        {{> projects/project-block}}
-                            {{/each}}
-                </strong></h3>
-                <p>Position</p>
-                <p>She packed her seven versalia, put her initial into the belt and made herself on the way.</p>
-                <div class="mb-1 mt-2 mr-3 align-self-center pt-3 d-block">
-                    <a href="#" role="button" class="  p-1 m-2">
-                        <i class="fab fa-twitter fa-md text-primary" aria-hidden="true"></i>
-                    </a>
-                    <a href="#" role="button" class="  p-1 m-2">
-                        <i class="fab fa-facebook fa-md  text-primary" aria-hidden="true"></i>
-                    </a>
-                    <a href="#" role="button" class="  p-1 m-2">
-                        <i class="fab fa-linkedin fa-md  text-primary" aria-hidden="true"></i>
-                    </a>
-                    <a href="#" role="button" class="  p-1 m-2">
-                        <i class="fab fa-google-plus fa-md  text-primary" aria-hidden="true"></i>
-                    </a>
-                </div>
-            </div>
-            <div class="col-md-3 mb-5 col-12">
+                    
+                    <h3><strong> {{name}} </strong></h3>
+                    <p>Position</p>
+                    <p>Description: {{description}}</p>
+                    <p>Start Date: {{startDate}}</p>
+                    <p>Due Date: {{dueDate}}</p>
+
+
+                {{!-- {{> projects/project-block}} --}}
+
+            </div> 
+            {{else}}
+                    <p>No projects available</p>
+            {{/each}} 
+            
+            {{!-- <div class="col-md-3 mb-5 col-12">
                 <img alt="image" style="max-width:150px;" class="img-fluid mb-4 mt-3 rounded-circle img-rised"
                     src="http://via.placeholder.com/250x250/007bff/ffffff">
                 <h3><strong>ProjectName 2</strong></h3>
@@ -95,7 +90,7 @@
                         <i class="fab fa-google-plus fa-md  text-primary" aria-hidden="true"></i>
                     </a>
                 </div>
-            </div>
+            </div> --}}
         </div>
     </div>
 </section>
