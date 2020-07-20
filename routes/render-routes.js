@@ -33,7 +33,14 @@ module.exports = function( app ){
 
     app.get( '/taskReport', function( req, res ){
 
-        res.render( 'taskReport', {} );
+        db.Task.findAll({
+            where: {
+
+            }
+        }).then((result) =>{ 
+            const tasks = result.map(task => task.dataValues)
+            res.render( 'taskReport', {tasks});
+        })
     } );
 
     app.get( '/projectCreate', function( req, res ){

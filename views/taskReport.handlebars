@@ -1,3 +1,5 @@
+
+
 <section class="bg-white text-dark pt-5 pb-5">
     <div class="container">
         <div class="row text-center">
@@ -5,6 +7,16 @@
                 <h3 class="  mb-4">Task Report</h3>
                 <h4 class="  mb-4">Here you can find all of the tasks that need to be completed by the project
                     collaborators.</h4>
+            </div>
+            <div>
+                <h3>Here is a list of all the tasks needed to be completed:</h3>
+            {{#each tasks}}
+            <p>Task name: {{shortname}}</p>
+            <p>Description: {{description}}</p>
+            <p>Category: {{category}}</p>
+            <p>Start Date: {{startDate}}</p>
+            <p>Due Date: {{dueDate}}</p>
+            {{/each}}
             </div>
         </div>
         <div class="row text-center mt-md-5">
@@ -95,3 +107,17 @@
         </div>
     </div>
 </section>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js" type="text/javascript"></script>
+
+{{!-- <script src="../public/js/moment.min.js" type="text/javascript"> --}}
+<script>
+    
+$(document).ready(function(){
+const moment = require("moment");
+    console.log("Hello");
+    var current = moment().format('dddd Do MMMM YYYY');
+    console.log("current time: ", current);
+})
+
+</script>
