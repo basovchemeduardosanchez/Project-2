@@ -1,6 +1,13 @@
 
 const db = require('../models');
 
+// !! Sequelize results have a lot of extra attributes, the solution according to https://stackoverflow.com/a/42007460 is to use the .get function as below
+function getPlainResults( pResults ){
+    return pResults.map( function( pItem ){
+        return pItem.get( { plain: true } );
+    } );
+}
+
 module.exports = function( app ){ 
     // SECTION Routes
     // TODO: Create your routes here
@@ -12,8 +19,7 @@ module.exports = function( app ){
     } );
     // 
     app.get( '/userDashboard', function( req, res ){
-      
-        res.render( 'userDashboard', {title: 'User Dashbord - Roadmap Planner'} );
+        res.render( 'userDashboard', {title: 'User Dashboard - Roadmap Planner'} );
     } );
 
     app.get( '/projectReport', function( req, res ){
@@ -44,8 +50,14 @@ module.exports = function( app ){
     } );
 
     app.get( '/projectCreate', function( req, res ){
-
-        res.render( 'projectCreate', {} );
+        db.User.findAll( {
+            where: {}
+        } )
+            .then( function( pResults ){
+                res.render( 'projectCreate', {
+                    users: getPlainResults( lPlainResults )
+                } );
+            } );
     } );
 
     app.get( '/login', function( req, res ){
@@ -64,8 +76,22 @@ module.exports = function( app ){
     } );
 
     app.get( '/taskCreatenew', function( req, res ){
+        var lUsers,
+            lProjects;
 
-        res.render( 'taskCreatenew', {} );
+        db.User.findAll()
+            .then( function( pResults ){
+                lUsers = getPlainResults( pResults );
+                return db.Project.findAll();
+            } )
+            .then( function( pResults ){
+                lProjects = getPlainResults( pResults );
+
+                res.render( 'taskCreatenew', {
+                    users: lUsers,
+                    projects: lProjects
+                } );
+            } );
     } );
 
     app.get( '/taskSubmitted', function( req, res ){

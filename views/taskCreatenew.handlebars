@@ -16,32 +16,43 @@
                 <div class="card-body" style="background-color: white;color:#002B36">
                   <form>
                     <div class="form-group">
+                      <label for="taskCreateProject">Project</label>
+                      <select class="custom-select" id="taskCreateProject">
+                          <option value="">- Select a Project -</option>
+                          {{#each projects as |project projectPosition|}}
+                              <option value="{{project.id}}">
+                                  {{project.id}} - {{project.name}}
+                              </option>
+                          {{/each}}
+                      </select>
+                    </div>
+                    <div class="form-group">
                       <label for="exampleInputName1">Task Name</label>
                       <input type="text" class="form-control" id="taskCreateName" placeholder="Title">
                     </div>
                     <div class="form-group">
-                      <label for="exampleInputName1">Assigned to</label>
-                      <input type="text" class="form-control" id="taskCreateAssign" placeholder="John Doe">
+                      <label for="taskCreateAssign">Assigned to</label>
+                      <select class="custom-select" id="taskCreateAssign">
+                          <option value="">- Select a User -</option>
+                          {{#each users as |user userPosition|}}
+                              <option value="{{user.id}}">
+                                  {{user.name}} ({{user.email}})
+                              </option>
+                          {{/each}}
+                      </select>
                     </div>
                     <div class="textarea-container mt-4">
                       <label for="exampleInputName1">Task Description</label>
                       <textarea class="form-control" id="taskCreateDes" name="name" rows="2" cols="50" placeholder="What does the task consist of..." style="margin-top: 0px; margin-bottom: 0px; height: 200px;"></textarea>
                     </div>
                     <div class="form-group">
-                    <form action="/action_page.php">
-                      <label for="startDate">Start Date:</label>
-                      <input type="date" id="taskCreateStart" name="startDate">
-                      <input type="submit">
-                    </form>
+                        <label for="startDate">Start Date:</label>
+                        <input class="form-control" type="datetime-local" id="taskCreateStart" name="startDate">
                     </div>
-                  
-                  <div class="form-group">
-                    <form action="/action_page.php">
-                      <label for="dueDate">Due Date:</label>
-                      <input type="date" id="taskCreateDue" name="dueDate">
-                      <input type="submit">
-                    </form>
-                  </div>
+                    <div class="form-group">
+                        <label for="dueDate">Due Date:</label>
+                        <input class="form-control" type="datetime-local" id="taskCreateDue" name="dueDate">
+                    </div>
                 <p style="text-align: center;">
                   <a href="./taskCreatenew" id="taskSubmitBtn" class="btn btn-primary shadow-lg btn-round mt-2 mr-2 mb-2 ml-0  btn-lg">Add another task</a>
                   <a href="./taskSubmitted" id="taskSubmitBtn" class="btn btn-primary shadow-lg btn-round mt-2 mr-2 mb-2 ml-0  btn-lg">Finish</a>
