@@ -66,19 +66,38 @@ $(document).ready(function(){
 
 //PREVENT DEFAULT NEEDS TO BE REMOVED
     submitBtn.on("click", ()=>{
+
       event.preventDefault();
-    var task = $("#taskCreateName").val()
+    var taskName = $("#taskCreateName").val()
     var assign = $("#taskCreateAssign").val()
     var description = $("#taskCreateDes").val()
     var start = $("#taskCreateStart").val()
     var due = $("#taskCreateDue").val()
     
-    console.log("task", task)
-    console.log("manager", assign)
-    console.log("description", description)
-    console.log("start", start)
-    console.log("due", due)
+    console.log("task", taskName);
+    console.log("manager", assign);
+    console.log("description", description);
+    console.log("start", start);
+    console.log("due", due);
+    
+     var newTask = {
+      "shortname" : taskName,
+      "description": description,
+      "category": "course",
+      "startDate": start,
+      "dueDate": due,
+      "warningDate": due,
+      "completedDate": due,
+      "completed": 1,
+      "UserId" : 2,
+      "ProjectId": 1
+    }
+
+  addTask(newTask, ()=>{
+  console.log("Task Added");
+})
     })
+
 
 })
 </script>

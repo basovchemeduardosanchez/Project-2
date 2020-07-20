@@ -22,8 +22,8 @@ module.exports = function( app ){
 
             }
         }).then((result) =>{ 
-
-            res.render( 'projectReport', {projects:result});
+            const projects = result.map(project => project.dataValues)
+            res.render( 'projectReport', {projects});
         })
         // .catch(res, err){
         //     throw err
