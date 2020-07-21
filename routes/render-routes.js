@@ -22,6 +22,10 @@ module.exports = function( app ){
         res.render( 'userDashboard', {title: 'User Dashboard - Roadmap Planner'} );
     } );
 
+    app.get( '/projectDetails', function( req, res ){
+        res.render( 'projectDetails', {title: 'Project Details - Roadmap Planner'} );
+    } );
+
     app.get( '/projectReport', function( req, res ){
         db.Project.findAll({
             where: {
@@ -55,7 +59,8 @@ module.exports = function( app ){
         } )
             .then( function( pResults ){
                 res.render( 'projectCreate', {
-                    users: getPlainResults( lPlainResults )
+                    // users: getPlainResults( lPlainResults )
+                    users: getPlainResults(pResults)
                 } );
             } );
     } );

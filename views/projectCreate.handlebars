@@ -67,6 +67,8 @@
 <script>
     $( document ).ready( function(){
         var submitBtn = $("#projSubmitBtn");
+        console.log("Hi");
+
 
         submitBtn.on( "click", () => {
             var name = $( "#projCreateTitle" ).val();
@@ -75,6 +77,8 @@
             var description = $( "#projCreateDes" ).val();
             var start = $( "#projCreateStart" ).val();
             var due = $( "#projCreateDue" ).val();
+
+            console.log("Start", start)
 
             var newProject = {
                 "UserId" : owner,
