@@ -100,6 +100,7 @@ module.exports = function( app ){
                 lTask.dueDate = formatDate( lTask.dueDate );
                 lTask.warningDate = formatDate( lTask.warningDate );
                 lTask.completedDate = formatDate( lTask.completedDate );
+                console.log( lTask );
                 res.render('task',lTask);
             });
 
