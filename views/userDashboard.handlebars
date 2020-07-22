@@ -14,21 +14,7 @@
                     
                 </div>
                 {{/each}}
-                {{!-- <div class="progress mb-3 mt-2">
-                    <div class="progress-bar " role="progressbar" style="width: 70%">
-                        <span class="stacked-label" style="color: antiquewhite;">Project 2</span>
-                    </div>
-                </div>
-                <div class="progress mb-3 mt-2">
-                    <div class="progress-bar " role="progressbar" style="width: 80%">
-                        <span class="stacked-label" style="color: antiquewhite;">Project 3</span>
-                    </div>
-                </div>
-                <div class="progress mb-3 mt-2">
-                    <div class="progress-bar " role="progressbar" style="width: 70%">
-                        <span class="stacked-label" style="color: antiquewhite;">Project 4</span>
-                    </div>
-                </div> --}}
+
                 <p class="text-h3 mt-5 mb-5">
                     <a class="btn btn-outline-dark" href="http://bootstraptor.com">Learn More</a>
                 </p>
@@ -51,26 +37,38 @@
             </div>
             <div class="col-md-3 col-6 mx-auto">
                 <div class="card">
-                    <img class="card-img-top shadow" src="urgent.jpg" alt="Profile">
+                 <div style="text-align: center;">
+                    <img class="card-img-top shadow" src="urgent-new.png" style="height:150px; width:150px; text-align:center"alt="Profile">
+                    </div>
                     <div class="card-body text-center">
                         <h4 class="card-title">Overdue</h4>
                         <p class="card-text text-muted">Needs your attention now...</p>
                         <p>
                             <a class="btn btn-primary" data-toggle="collapse" href="#urgentTasks" role="button"
                                 aria-expanded="false" aria-controls="collapseExample">
-                                Urgent Tasks..
+                                Overdue Tasks
                             </a>
                         <div class="collapse" id="urgentTasks">
+                            
                             <div class="card card-body">
-                                Generates list of Urgent Tasks.
-                            </div>
+                                {{#each tasks}}
+                                {{#if overdue}}
+                                <p><strong>{{shortname}}</strong></p>
+                                <p>{{dueDate}}</p>
+                                <hr>
+                                {{/if}}
+                                {{/each}}
+                                </div>
+                                
                         </div>
                     </div>
                 </div>
             </div>
             <div class="col-md-3 col-6 mx-auto">
                 <div class="card">
-                    <img class="card-img-top shadow" src="important.png" alt="Profile">
+                    <div style="text-align: center;">
+                    <img class="card-img-top shadow" src="important-new.png" style="height:150px; width:150px; text-align:center"alt="Profile">
+                    </div>
                     <div class="card-body text-center">
                         <h4 class="card-title">Creeping up...</h4>
                         <p class="card-text text-muted">Due within 3 days</p>
@@ -81,7 +79,13 @@
                             </a>
                         <div class="collapse" id="importantTasks">
                             <div class="card card-body">
-                                Generates list of Important Tasks.
+                                {{#each tasks}}
+                                {{#if lessThanThree}}
+                                <p><strong>{{shortname}}</strong></p>
+                                <p>{{dueDate}}</p>
+                                <hr>
+                                {{/if}}
+                                {{/each}}
                             </div>
                         </div>
                     </div>
