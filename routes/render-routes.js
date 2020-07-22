@@ -1,4 +1,5 @@
 
+const moment = require( 'moment' );
 const db = require('../models');
 const hoursRemaining = require("../public/js/moment")
 
@@ -7,6 +8,9 @@ function getPlainResults( pResults ){
     return pResults.map( function( pItem ){
         return pItem.get( { plain: true } );
     } );
+}
+function formatDate( pDate ){
+    return moment( pDate ).format( 'ddd MMM Mo YYYY HH:mm' );
 }
 
 module.exports = function( app ){ 
@@ -41,14 +45,41 @@ module.exports = function( app ){
             where: {
 
             }
-        }).then((result) =>{ 
-            const projects = result.map(project => project.dataValues)
-            res.render( 'projectReport', {projects});
+        }).then( (result) =>{ 
+            const lProjects = getPlainResults( result ).map( function( pProject ){
+                pProject.dueDate = formatDate( pProject.dueDate );
+                return pProject;
+            } );
+            res.render( 'projectReport', { projects: lProjects } );
         })
         // .catch(res, err){
         //     throw err
         // })
     
+    } );
+    app.get( '/projects/:id', function( req, res ){
+        // TODO: Implement route logic
+        // !! Don't forget to send a response
+        db.Project.findOne({
+            where: {
+                id: req.params.id
+            },
+            include: [ db.Task, db.User ],
+            // See https://sequelize.org/master/manual/model-querying-basics.html#ordering
+            order: [
+                // Sort by the ones that are due first
+                [ db.Task, 'dueDate', 'ASC' ],
+            ]
+        }).then(function( pResult ){
+            const lProject = pResult.get( { plain: true } );
+            lProject.dueDate = formatDate( lProject.dueDate );
+            lProject.warningDate = formatDate( lProject.warningDate );
+            lProject.completedDate = formatDate( lProject.completedDate );
+
+            console.log( lProject );
+
+            res.render( 'project', lProject );
+        });
     } );
 
     app.get( '/taskReport', function( req, res ){
