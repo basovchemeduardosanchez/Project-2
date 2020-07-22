@@ -1,0 +1,31 @@
+<section class="bg-white text-dark pt-5 pb-5">
+    <div class="container">
+        <div class="row">
+            <div class="col">
+                    <h1>{{shortname}}</h1>
+                    <p>Description:{{description}}</p>
+                    <p>Category:{{category}}</p>
+                    <p>Warning Date:{{warningDate}}</p>
+                    <p>Completed Date:{{completedDate}}</p>
+                    <p>Due Date:{{dueDate }}</p>
+                    <button type="button" class="btn btn-primary" id="complete" data-complete="{{complete}}" data-id="{{id}}">Mark ass {{#if completed}}incomplete{{else}}complete{{/if}}</button>                  
+            </div>
+        </div>
+    </div>
+</section>
+<script>
+    $( document ).ready(function(){
+        var lButton$ = $( '#complete' );
+        var lComplete = lButton$.data( 'complete' );
+        var lId = lButton$.data ( 'id' );
+        updateTask(
+            lId,
+            {
+                completed: lCompleted,
+                completedDate:new Date().toISOString()
+            },
+            function( pData ){
+                window.location.reload();
+            })
+    });
+</script>
