@@ -4,9 +4,8 @@
     <div class="container">
         <div class="row text-center">
             <div class="col">
-                <h3 class="  mb-4">Task Report</h3>
-                <h4 class="  mb-4">Here you can find all of the tasks that need to be completed by the project
-                    collaborators.</h4>
+                <h2 class="  mb-2"><strong>Task Report</strong></h1>
+                <h4 class="  mb-2">Here you can find all of the tasks that need completion.</h4>
             </div>
             <div>
           
@@ -15,12 +14,12 @@
         <div class="row text-center mt-md-5">
             <div class="col-md-3 mb-5 col-12">
                 <img alt="image" style="max-width:150px;" class="img-fluid mb-4 mt-3 rounded-circle img-rised"
-                    src="http://via.placeholder.com/250x250/007bff/ffffff">
+                    src="red-clock.png">
                 <h3><strong>Overdue</strong></h3>
             {{#each tasks}}
 
             {{#if overdue}}
-            <h3>Task name: {{shortname}}</h3>
+            <h4>Task name: {{shortname}}</h5>
             <p>Description: {{description}}</p>
             <p>Due Date: {{dueDate}}</p>
             {{!-- <button class="change-complete" data-id="{{id}}" data-newsleep="{{sleep}}">
@@ -34,7 +33,7 @@
             </div>
             <div class="col-md-3 mb-5 col-12">
                 <img alt="image" style="max-width:150px;" class="img-fluid mb-4 mt-3 rounded-circle img-rised"
-                    src="http://via.placeholder.com/250x250/007bff/ffffff">
+                    src="orange-clock.png">
                 <h3><strong>Due within 3 days</strong></h3>
                 {{#each tasks}}
 
@@ -53,7 +52,7 @@
             </div>
             <div class="col-md-3 mb-5 col-12">
                 <img alt="image" style="max-width:150px;" class="img-fluid mb-4 mt-3 rounded-circle img-rised"
-                    src="http://via.placeholder.com/250x250/007bff/ffffff">
+                    src="yellow-clock.png">
                 <h3><strong>Due within 7 days</strong></h3>
             {{#each tasks}}
 
@@ -72,7 +71,7 @@
             </div>
             <div class="col-md-3 mb-5 col-12">
                 <img alt="image" style="max-width:150px;" class="img-fluid mb-4 mt-3 rounded-circle img-rised"
-                    src="http://via.placeholder.com/250x250/007bff/ffffff">
+                    src="green-clock.png">
                 <h3><strong>Due in over a week</strong></h3>
             {{#each tasks}}
 
