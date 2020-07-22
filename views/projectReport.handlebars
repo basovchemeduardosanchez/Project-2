@@ -7,9 +7,12 @@
             </div>
         </div>
         <div class="row text-center mt-md-5">
+
             {{#each projects}}
             <div class="col-md-3 mb-3 col-12">
                 <div class="border p-3">
+                    <img alt="image" style="max-width:150px;" class="img-fluid mb-4 mt-3 rounded-circle img-rised"
+                    src="lightbulb.png">  
                     <a href="/projects/{{id}}">
                         <h3>{{name}}</h3>
                     </a>
@@ -22,24 +25,8 @@
             </div> 
             {{else}}
                     <p>No projects available</p>
-            {{/each}} 
+            {{/each}}
+
         </div>
     </div>
 </section>
-<script>
-     $( document ).ready( function(){
-        var submitBtn = $(".submitBtn");
-        console.log("Hi");
-
-        submitBtn.on( "click", () => {
-            event.preventDefault();
-            console.log(event.target.parentElement.getAttribute("id"));
-            console.log("Hi2");
-         console.log("ProjectID", $(this).val());
-         console.log("ProjectID", $("id").val());
-
-
-     })
-     })
-
-</script>

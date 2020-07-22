@@ -1,6 +1,7 @@
 
 const moment = require( 'moment' );
 const db = require('../models');
+const hoursRemaining = require("../public/js/moment")
 
 // !! Sequelize results have a lot of extra attributes, the solution according to https://stackoverflow.com/a/42007460 is to use the .get function as below
 function getPlainResults( pResults ){
@@ -23,11 +24,20 @@ module.exports = function( app ){
     } );
     // 
     app.get( '/userDashboard', function( req, res ){
-        res.render( 'userDashboard', {title: 'User Dashboard - Roadmap Planner'} );
+        db.Project.findAll({
+            where: {
+
+            }
+        }).then((result) =>{ 
+            const projects = result.map(project => project.dataValues)
+            res.render( 'userDashboard', {projects});
+        })
     } );
 
     app.get( '/projectDetails', function( req, res ){
-        res.render( 'projectDetails', {title: 'Project Details - Roadmap Planner'} );
+
+        
+        res.render( 'projectDetails', {} );
     } );
 
     app.get( '/projectReport', function( req, res ){
@@ -79,7 +89,27 @@ module.exports = function( app ){
 
             }
         }).then((result) =>{ 
-            const tasks = result.map(task => task.dataValues)
+            // const tasks = result.map(task => task.dataValues);
+            // task.dataValues.overdue;
+            let tasks = [];
+            result.map(task => {
+                var hours = hoursRemaining(task.dueDate);
+                if(hours <= 0){
+                task.setDataValue("overdue", true);
+                }
+                else if (hours <= 72 && hours > 0){
+                task.setDataValue("lessThan3", true);
+                }
+                else if (hours <= 168 && hours > 72){
+                    task.setDataValue("lessThan7", true);
+                    }
+                else{
+                    task.setDataValue("oneWeek", true);
+                }
+                tasks.push(task.dataValues);
+        console.log(hours);
+            })
+            
             res.render( 'taskReport', {tasks});
         })
     } );
