@@ -75,13 +75,35 @@ module.exports = function( app ){
             lProject.dueDate = formatDate( lProject.dueDate );
             lProject.warningDate = formatDate( lProject.warningDate );
             lProject.completedDate = formatDate( lProject.completedDate );
+            lProject.Tasks = lProject.Tasks.map ( function( pTask ){
+                pTask.dueDate = formatDate ( pTask.dueDate);
+                pTask.warningDate = formatDate ( pTask.warningDate);
+                pTask.completedDate = formatDate ( pTask.completedDate);
+                return pTask;
+            });
 
             console.log( lProject );
 
             res.render( 'project', lProject );
         });
     } );
+    app.get( '/tasks/:id', function( req, res ){
+        // TODO: Implement route logic
+        // !! Don't forget to send a response
+        db.Task.findOne({
+            where: {
+                id: req.params.id
+            }
+        })
+            .then(function( pResult ){
+                var lTask = pResult.get( {  plain: true } );
+                lTask.dueDate = formatDate( lTask.dueDate );
+                lTask.warningDate = formatDate( lTask.warningDate );
+                lTask.completedDate = formatDate( lTask.completedDate );
+                res.render('task',lTask);
+            });
 
+    } );
     app.get( '/taskReport', function( req, res ){
 
         db.Task.findAll({
