@@ -8,34 +8,49 @@
             </div>
         </div>
         <div class="row text-center mt-md-5">
+
             {{#each projects}}
             <div class="col-md-3 mb-5 col-12">
                 <img alt="image" style="max-width:150px;" class="img-fluid mb-4 mt-3 rounded-circle img-rised"
-                    src="http://via.placeholder.com/250x250/007bff/ffffff">     
-                    <a href="#" class="submitBtn" id={{id}}><h3><strong> {{name}} </strong></h3></a>
+                    src="lightbulb.png">     
+                    <a href="" class="submitBtn" id="{{id}}"><h3><strong> {{name}} </strong></h3></a>
                    <p>{{id}}</p>
                     <p>Due Date: {{dueDate}}</p>
             </div> 
             {{else}}
                     <p>No projects available</p>
-            {{/each}} 
+            {{/each}}
+
         </div>
     </div>
 </section>
-<script>
-     $( document ).ready( function(){
+{{!-- <script>
+     //$( document ).ready( function(){
         var submitBtn = $(".submitBtn");
-        console.log("Hi");
+        
+       // console.log("Hi");
 
-        submitBtn.on( "click", () => {
-            event.preventDefault();
-            console.log(event.target.parentElement.getAttribute("id"));
-            console.log("Hi2");
-         console.log("ProjectID", $(this).val());
-         console.log("ProjectID", $("id").val());
+        //submitBtn.on( "click", function (event){
+         //   event.preventDefault();
+            var id = $(this).attr("id")
+           // console.log("ProjectId: ", id);
+
+            //AJAX call for the console to the db with the ID
+            //api routes that allows me to search 
+           // $.get(`/api/projects/${id}/tasks/`)
+            .then(function(pResults, req, res) {
+           //     console.log(pResults);
+           // res.json( pResults);
+           // res.render( 'projectDetails', {pResults} );
+        });
+
+             //recieve an array and send it to the pDetails hbs
 
 
+
+
+            
      })
      })
 
-</script>
+</script> --}}

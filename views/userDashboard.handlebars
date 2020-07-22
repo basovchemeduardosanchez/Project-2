@@ -5,12 +5,16 @@
                 <h2 class="mb-3 mt-3">Welcome to your personalised dashboard</h2>
                 <p class="text-h3 lead">Here you can find all the tasks that have been assigned to you.</p>
                 <h4 class="mb-3 mt-3">Projects Completion Charts</h4>
+                {{#each projects}}
                 <div class="progress mb-3 mt-2">
+                    
                     <div class="progress-bar" role="progressbar" style="width: 60%">
-                        <span class="stacked-label " style="color: antiquewhite;">Project 1</span>
+                        <span class="stacked-label " style="color: antiquewhite;">{{name}}</span>
                     </div>
+                    
                 </div>
-                <div class="progress mb-3 mt-2">
+                {{/each}}
+                {{!-- <div class="progress mb-3 mt-2">
                     <div class="progress-bar " role="progressbar" style="width: 70%">
                         <span class="stacked-label" style="color: antiquewhite;">Project 2</span>
                     </div>
@@ -24,7 +28,7 @@
                     <div class="progress-bar " role="progressbar" style="width: 70%">
                         <span class="stacked-label" style="color: antiquewhite;">Project 4</span>
                     </div>
-                </div>
+                </div> --}}
                 <p class="text-h3 mt-5 mb-5">
                     <a class="btn btn-outline-dark" href="http://bootstraptor.com">Learn More</a>
                 </p>
@@ -49,8 +53,8 @@
                 <div class="card">
                     <img class="card-img-top shadow" src="urgent.jpg" alt="Profile">
                     <div class="card-body text-center">
-                        <h4 class="card-title">Urgent</h4>
-                        <p class="card-text text-muted">Due within 3 days</p>
+                        <h4 class="card-title">Overdue</h4>
+                        <p class="card-text text-muted">Needs your attention now...</p>
                         <p>
                             <a class="btn btn-primary" data-toggle="collapse" href="#urgentTasks" role="button"
                                 aria-expanded="false" aria-controls="collapseExample">
@@ -69,7 +73,7 @@
                     <img class="card-img-top shadow" src="important.png" alt="Profile">
                     <div class="card-body text-center">
                         <h4 class="card-title">Creeping up...</h4>
-                        <p class="card-text text-muted">Due within 7 days</p>
+                        <p class="card-text text-muted">Due within 3 days</p>
                         <p>
                             <a class="btn btn-primary" data-toggle="collapse" href="#importantTasks" role="button"
                                 aria-expanded="false" aria-controls="collapseExample">
