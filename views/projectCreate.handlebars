@@ -49,7 +49,7 @@
                             </div>
                             <p style="text-align: center;">
                                 <button type="button" id="projSubmitBtn" class="btn btn-primary shadow-lg btn-round mt-2 mr-2 mb-2 ml-0 btn-lg">
-                                    Create a new task
+                                    Create
                                 </button>
                                 <!-- <a href="/projectSubmitted" id="projLaterBtn" class="btn btn-primary shadow-lg btn-round mt-2 mr-2 mb-2 ml-0 btn-lg">
                                     Create tasks later
@@ -92,7 +92,8 @@
             // console.log( newProject );
 
             addProject( newProject, ( pCreatedProject ) => {
-                console.log( `Created project with ID: ${ pCreatedProject.id }` );
+                //console.log( `Created project with ID: ${ pCreatedProject.id }` );
+                window.location.assign(`/projects/${ pCreatedProject.id }`);
             } );
         } );
     } );

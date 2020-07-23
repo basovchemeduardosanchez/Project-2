@@ -2,13 +2,15 @@
     <div class="container">
         <div class="row">
             <div class="col">
-                    <h1>{{shortname}}</h1>
-                    <p>Description:{{description}}</p>
-                    <p>Category:{{category}}</p>
-                    <p>Warning Date:{{warningDate}}</p>
-                    <p>Completed Date:{{completedDate}}</p>
-                    <p>Due Date:{{dueDate }}</p>
-                    <button type="button" class="btn btn-primary" id="complete" data-complete="{{complete}}" data-id="{{id}}">Mark ass {{#if completed}}incomplete{{else}}complete{{/if}}</button>                  
+                <h1>{{shortname}}</h1>
+                <p>Category: {{category}}<br>
+                Warning Date: {{warningDate}}<br>
+                <!--Completed Date: {{completedDate}}<br>-->
+                Due Date: {{dueDate }}</p>
+                <p>Description: {{description}}</p>
+                <!-- !! data-complete is backwards because that's the information to be sent to the server -->
+                <button type="button" class="btn btn-{{#if completed}}danger{{else}}success{{/if}}" id="complete" data-complete="{{#if completed}}0{{else}}1{{/if}}" data-id="{{id}}">Mark ass {{#if completed}}incomplete{{else}}complete{{/if}}</button>
+                <a href="/projects/{{ProjectId}}" class="btn btn-primary">Return to Project</a>
             </div>
         </div>
     </div>
@@ -16,16 +18,20 @@
 <script>
     $( document ).ready(function(){
         var lButton$ = $( '#complete' );
-        var lComplete = lButton$.data( 'complete' );
+        console.log( lButton$ );
+        var lCompleted = parseInt(lButton$.data( 'complete' ));
         var lId = lButton$.data ( 'id' );
-        updateTask(
-            lId,
-            {
-                completed: lCompleted,
-                completedDate:new Date().toISOString()
-            },
-            function( pData ){
-                window.location.reload();
-            })
-    });
+        $( lButton$ ).on( 'click', function( pEvent ){
+            updateTask(
+                lId,
+                {
+                    completed: lCompleted,
+                    completedDate:new Date().toISOString()
+                },
+                function( pData ){
+                    window.location.reload();
+                }
+            );
+        });    
+    } );
 </script>

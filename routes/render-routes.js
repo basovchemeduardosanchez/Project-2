@@ -20,18 +20,38 @@ module.exports = function( app ){
         // TODO: Implement route logic
         // !! Don't forget to send a response
         // !! This requires Express to have a view engine set
-        res.render( 'index', {title: 'Homepage'} );
+        res.render( 'index', {title: 'Homepage', layout: 'not-accessed'} );
     } );
-    // 
+    // :id
     app.get( '/userDashboard', function( req, res ){
         var lTasks;
         var lProjects;
 
         db.Project.findAll({
             where: {
-            }
+                //UserId: req.params.id
+            },
+            include:[db.Task]
         }).then((result) =>{ 
             lProjects = result.map(project => project.dataValues);
+            lProjects = lProjects.map( function( pProject ){
+                var lTotalTasks = pProject.Tasks.length;
+                var lCompletedTasks = 0;
+                pProject.Tasks.forEach( function( pTask ){
+                    if( pTask.completed ){
+                        lCompletedTasks++;
+                    }
+                } );
+                var lCompletedPercent = 0;
+                if (lTotalTasks > 0){
+                    lCompletedPercent = lCompletedTasks / lTotalTasks * 100;
+                }
+                console.log( lCompletedPercent );
+
+                pProject.completedPercent = lCompletedPercent;
+                return pProject;
+            } );
+
             return db.Task.findAll();
         }).then (function (pResults){
             lTasks = [];
@@ -125,6 +145,7 @@ module.exports = function( app ){
                 lTask.dueDate = formatDate( lTask.dueDate );
                 lTask.warningDate = formatDate( lTask.warningDate );
                 lTask.completedDate = formatDate( lTask.completedDate );
+                console.log( lTask );
                 res.render('task',lTask);
             });
 
@@ -175,12 +196,12 @@ module.exports = function( app ){
 
     app.get( '/login', function( req, res ){
 
-        res.render( 'login', {} );
+        res.render( 'login', {layout: 'not-accessed'} );
     } );
 
     app.get( '/register', function( req, res ){
 
-        res.render( 'register', {} );
+        res.render( 'register', {layout: 'not-accessed'} );
     } );
 
     app.get( '/projectSubmitted', function( req, res ){

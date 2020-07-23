@@ -54,8 +54,8 @@
                         <input class="form-control" type="datetime-local" id="taskCreateDue" name="dueDate">
                     </div>
                 <p style="text-align: center;">
-                  <a href="./taskCreatenew" id="taskSubmitBtn" class="btn btn-primary shadow-lg btn-round mt-2 mr-2 mb-2 ml-0  btn-lg">Add another task</a>
-                  <a href="./taskSubmitted" id="taskSubmitBtn" class="btn btn-primary shadow-lg btn-round mt-2 mr-2 mb-2 ml-0  btn-lg">Finish</a>
+                  <!--<a href="/taskCreatenew" id="taskSubmitBtn" class="btn btn-primary shadow-lg btn-round mt-2 mr-2 mb-2 ml-0  btn-lg">Add another task</a>-->
+                  <a href="#" id="taskSubmitBtn" class="btn btn-primary shadow-lg btn-round mt-2 mr-2 mb-2 ml-0  btn-lg">Finish</a>
                  </p>
                   </form>
                 </div>
@@ -70,28 +70,27 @@
 <script>
 
 $(document).ready(function(){
+  //console.log("Hey");
 
-    console.log("Hey");
+  var submitBtn = $("#taskSubmitBtn")
 
-    var submitBtn = $("#taskSubmitBtn")
-
-//PREVENT DEFAULT NEEDS TO BE REMOVED
-    submitBtn.on("click", ()=>{
-
-      event.preventDefault();
+  //PREVENT DEFAULT NEEDS TO BE REMOVED
+  submitBtn.on("click", ()=>{
+    event.preventDefault();
     var taskName = $("#taskCreateName").val()
     var assign = $("#taskCreateAssign").val()
     var description = $("#taskCreateDes").val()
     var start = $("#taskCreateStart").val()
-    var due = $("#taskCreateDue").val()
+    var due = $("#taskCreateDue").val();
+    var project = $("#taskCreateProject").val();
     
     console.log("task", taskName);
     console.log("manager", assign);
     console.log("description", description);
     console.log("start", start);
     console.log("due", due);
-    
-     var newTask = {
+  
+    var newTask = {
       "shortname" : taskName,
       "description": description,
       "category": "course",
@@ -99,18 +98,18 @@ $(document).ready(function(){
       "dueDate": due,
       "warningDate": due,
       "completedDate": due,
-      "completed": 1,
-      "UserId" : 2,
-      "ProjectId": 1
+      "completed": 0,
+      "UserId" : assign,
+      "ProjectId": project
     }
-  //hoursRemaining(due);
-  
-  addTask(newTask, ()=>{
-  console.log("Task Added");
-})
+    //hoursRemaining(due);
+
+    addTask(newTask, ( pData )=>{
+      //console.log("Task Added");
+      console.log( pData );
+      window.location.assign( `/tasks/${ pData.id }` );
     })
-
-
+  })
 })
 </script>
 
