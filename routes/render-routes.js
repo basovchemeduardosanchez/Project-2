@@ -20,15 +20,16 @@ module.exports = function( app ){
         // TODO: Implement route logic
         // !! Don't forget to send a response
         // !! This requires Express to have a view engine set
-        res.render( 'index', {title: 'Homepage'} );
+        res.render( 'index', {title: 'Homepage', layout: 'not-accessed'} );
     } );
-    // 
+    // :id
     app.get( '/userDashboard', function( req, res ){
         var lTasks;
         var lProjects;
 
         db.Project.findAll({
             where: {
+                //UserId: req.params.id
             }
         }).then((result) =>{ 
             lProjects = result.map(project => project.dataValues);
@@ -176,12 +177,12 @@ module.exports = function( app ){
 
     app.get( '/login', function( req, res ){
 
-        res.render( 'login', {} );
+        res.render( 'login', {layout: 'not-accessed'} );
     } );
 
     app.get( '/register', function( req, res ){
 
-        res.render( 'register', {} );
+        res.render( 'register', {layout: 'not-accessed'} );
     } );
 
     app.get( '/projectSubmitted', function( req, res ){

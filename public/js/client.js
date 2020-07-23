@@ -28,6 +28,21 @@ function getAllUsers  ( pCallback ){
             throw pErrorThrown;
         } );
 }
+function getUserByEmail( pEmail, pCallback ){
+    $.ajax(
+        `/api/userByEmail/${ pEmail }`,
+        {
+            type: `GET`
+        }
+    )
+        .done( function( pData, pTextStatus, pJqXhr ){
+            // TODO: Implement logic to execute after the request has completed
+            pCallback( pData );
+        } )
+        .fail( function( pJqXhr, pTextStatus, pErrorThrown ){
+            throw pErrorThrown;
+        } );
+}
 function getAllProjects ( pCallback ){
     $.ajax(
         `/api/projects/`,

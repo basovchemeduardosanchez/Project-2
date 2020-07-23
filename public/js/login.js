@@ -69,32 +69,38 @@ $("#regSubmitBtn").on("click", function(){
   }
 })
 
-$("#submitLogin").on("click", function(){
-  console.log("si funciona")
+$( "#submitLogin" ).on( "click", function(){
+  //console.log("si funciona")
   emailInput = $("#emailLogin").val();
-  console.log(emailInput);
+  //console.log(emailInput);
   passwordInput = $("#passwordLogin").val();
-  console.log(passwordInput);
+  //console.log(passwordInput);
   if (emailInput || passwordInput) {
     firebase.auth().signInWithEmailAndPassword(emailInput, passwordInput).then((response)=>{
-    window.location.assign('/userDashboard');
-    console.log(response);
+      //window.location.assign('/userDashboard');
+      //console.log('RESPONSE', response);
+      //console.log( getUserByEmail );
+      getUserByEmail( response.user.email, function( pData ){
+        // console.log( pData );
+        localStorage.setItem( 'currentUser', JSON.stringify( pData ) );
+        window.location.assign( `/userDashboard` );
+      } );
     }).catch(function(){
       // $("#password").addClass("invalid");
       // $("#password").prop("aria-invalid", "true");
       // $(".helper-text").css("display", "block");
       // $("#enterButton").attr("href", "./events.html");
-      console.log("password incorrect");
-      $(".helper-text").text("Wrong Password");
+      alert("Incorrect Details");
+      //$(".helper-text").text("Wrong Password");
     });
-  } else if (emailInput === "" || passwordInput === ""){
+  } else {//if (emailInput === "" || passwordInput === ""){
     alert("Enter a valid email and password");
-  } else {
+  }/* else {
     console.log("hi");
 
-    window.location.assign('/userDashboard');
+    //window.location.assign('/userDashboard');
 
-  }
-})
+  }*/
+} );
 
 

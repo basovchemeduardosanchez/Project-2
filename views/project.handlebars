@@ -3,7 +3,10 @@
         <div class="row">
             <div class="col">
                 <h1>{{name}}</h1>
-                <p>{{dueDate}}</p>
+                <p>
+                    Owner: {{User.name}} ({{User.email}})<br>
+                    Due: {{dueDate}}
+                </p>
                 <a href="/taskCreatenew" class="btn btn-primary">Add Task</a>
             </div>
         </div>
@@ -16,17 +19,17 @@
                             <th scope="col">Shortname</th>
                             <th scope="col">Due</th>
                             <th scope="col">Warning</th>
-                            <th scope="col">Completed</th>
+                            <!--<th scope="col">Completed</th>-->
                         </tr>
                     </thead>
                     <tbody>
                         {{#each Tasks}}
                             <tr>
-                                <td><input type="checkbox" id="task-{{id}}" disabled {{#if completed}}checked{{/if}}></td>
+                                <td><input type="checkbox" class="checkbox" data-id="{{id}}" {{#if completed}}checked{{/if}}></td>
                                 <td><a href="/tasks/{{id}}">{{shortname}}</a></td>
                                 <td>{{dueDate}}</td>
                                 <td>{{warningDate}}</td>
-                                <td>{{completedDate}}</td>
+                                <!--<td>{{completedDate}}</td>-->
                             </tr>
                         {{/each}}
                     </tbody>
@@ -35,3 +38,17 @@
         </div>
     </div>
 </section>
+<script>
+    $( document ).ready( function(){
+        $( '.checkbox' ).on( 'change', function( pEvent ){
+            var lCheckbox$ = $( this );
+            var lChecked = lCheckbox$.prop( 'checked' );
+            var lTaskId = lCheckbox$.data( 'id' );
+            updateTask( lTaskId, {
+                completed: lChecked
+            }, function(){
+                window.location.reload();
+            } )
+        } );
+    } );
+</script>

@@ -13,6 +13,18 @@ module.exports = function ( app ){
             res.json( pResults);
         });
     } );
+    app.get( '/api/userByEmail/:email', function( req, res ){
+        // TODO: Implement route logic
+        // !! Don't forget to send a response
+        db.User.findOne({
+            where: {
+                email: req.params.email
+            }
+        })
+        .then(function(pResults){
+            res.json( pResults );
+        });
+    } );
     app.get( '/api/users/:id/projects/', function( req, res ){
         // TODO: Implement route logic
         // !! Don't forget to send a response
