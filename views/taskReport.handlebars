@@ -4,9 +4,8 @@
     <div class="container">
         <div class="row text-center">
             <div class="col">
-                <h3 class="  mb-4">Task Report</h3>
-                <h4 class="  mb-4">Here you can find all of the tasks that need to be completed by the project
-                    collaborators.</h4>
+                <h2 class="  mb-2"><strong>Task Report</strong></h1>
+                <h4 class="  mb-2">Here you can find all of the tasks that need completion.</h4>
             </div>
             <div>
           
@@ -15,17 +14,19 @@
         <div class="row text-center mt-md-5">
             <div class="col-md-3 mb-5 col-12">
                 <img alt="image" style="max-width:150px;" class="img-fluid mb-4 mt-3 rounded-circle img-rised"
-                    src="http://via.placeholder.com/250x250/007bff/ffffff">
-                <h3><strong>Overdue</strong></h3>
+                    src="red-clock.png">
+                <h3><u><strong>Overdue</strong></u></h3>
             {{#each tasks}}
 
             {{#if overdue}}
-            <h3>Task name: {{shortname}}</h3>
-            <p>Description: {{description}}</p>
-            <p>Due Date: {{dueDate}}</p>
+            <hr>
+            <h5><strong>{{shortname}}</strong></h5>
+            {{!-- <p>Description: {{description}}</p> --}}
+            <p class="mb-0">Due Date: {{dueDate}}</p>
             {{!-- <button class="change-complete" data-id="{{id}}" data-newsleep="{{sleep}}">
 		    {{#if completed}}Complete!{{else}}Re-do!{{/if}}
 	        </button> --}}
+            <hr>
             {{/if}}
 
             {{/each}}
@@ -34,17 +35,19 @@
             </div>
             <div class="col-md-3 mb-5 col-12">
                 <img alt="image" style="max-width:150px;" class="img-fluid mb-4 mt-3 rounded-circle img-rised"
-                    src="http://via.placeholder.com/250x250/007bff/ffffff">
-                <h3><strong>Due within 3 days</strong></h3>
+                    src="orange-clock.png">
+                <h3><u><strong>Due within 3 days</strong></u></h3>
                 {{#each tasks}}
 
             {{#if lessThan3}}
-            <h3>Task name: {{shortname}}</h3>
-            <p>Description: {{description}}</p>
+            <hr>
+            <h5><strong>{{shortname}}</strong></h5>
+            {{!-- <p>Description: {{description}}</p> --}}
             <p>Due Date: {{dueDate}}</p>
             {{!-- <button class="change-complete" data-id="{{id}}" data-newsleep="{{sleep}}">
 		    {{#if completed}}Complete!{{else}}Re-do!{{/if}}
 	        </button> --}}
+            <hr>
             {{/if}}
 
             {{/each}}
@@ -53,17 +56,18 @@
             </div>
             <div class="col-md-3 mb-5 col-12">
                 <img alt="image" style="max-width:150px;" class="img-fluid mb-4 mt-3 rounded-circle img-rised"
-                    src="http://via.placeholder.com/250x250/007bff/ffffff">
-                <h3><strong>Due within 7 days</strong></h3>
+                    src="yellow-clock.png">
+                <h3><u><strong>Due within 7 days</strong></u></h3>
             {{#each tasks}}
 
             {{#if lessThan7}}
-            <h3>Task name: {{shortname}}</h3>
-            <p>Description: {{description}}</p>
+            <hr>
+            <h5><strong>{{shortname}}</strong></h5>
             <p>Due Date: {{dueDate}}</p>
             {{!-- <button class="change-complete" data-id="{{id}}" data-newsleep="{{sleep}}">
 		    {{#if completed}}Complete!{{else}}Re-do!{{/if}}
 	        </button> --}}
+            <hr>
             {{/if}}
 
             {{/each}}
@@ -72,17 +76,18 @@
             </div>
             <div class="col-md-3 mb-5 col-12">
                 <img alt="image" style="max-width:150px;" class="img-fluid mb-4 mt-3 rounded-circle img-rised"
-                    src="http://via.placeholder.com/250x250/007bff/ffffff">
-                <h3><strong>Due in over a week</strong></h3>
+                    src="green-clock.png">
+                <h3><u><strong>Due in over a week</strong></u></h3>
             {{#each tasks}}
 
             {{#if oneWeek}}
-            <h3>Task name: {{shortname}}</h3>
-            <p>Description: {{description}}</p>
+            <hr>
+            <h5><strong>{{shortname}}</strong></h5>
             <p>Due Date: {{dueDate}}</p>
             {{!-- <button class="change-complete" data-id="{{id}}" data-newsleep="{{sleep}}">
 		    {{#if completed}}Complete!{{else}}Re-do!{{/if}}
 	        </button> --}}
+            <hr>
             {{/if}}
 
             {{/each}}

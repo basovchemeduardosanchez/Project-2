@@ -24,15 +24,40 @@ module.exports = function( app ){
     } );
     // 
     app.get( '/userDashboard', function( req, res ){
+        var lTasks;
+        var lProjects;
+
         db.Project.findAll({
             where: {
-
             }
         }).then((result) =>{ 
-            const projects = result.map(project => project.dataValues)
-            res.render( 'userDashboard', {projects});
-        })
-    } );
+            lProjects = result.map(project => project.dataValues);
+            return db.Task.findAll();
+        }).then (function (pResults){
+            lTasks = [];
+            pResults.map(task => {
+                
+                var hours = hoursRemaining(task.dueDate);
+                if(hours <= 0){
+                task.setDataValue("overdue", true);
+                }
+                else if (hours <= 72 && hours > 0){
+                task.setDataValue("lessThan3", true);
+                }
+                else if (hours <= 168 && hours > 72){
+                    task.setDataValue("lessThan7", true);
+                    }
+                else{
+                    task.setDataValue("oneWeek", true);
+                }
+                lTasks.push(task.dataValues);
+                // console.log(hours);
+                
+            });
+            // console.log("line56", lProjects)
+            res.render( 'userDashboard', {projects:lProjects, tasks: lTasks});
+        });
+    });
 
     app.get( '/projectDetails', function( req, res ){
 
