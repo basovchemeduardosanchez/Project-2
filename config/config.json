@@ -1,23 +1,23 @@
 {
   "development": {
-    "username": "root",
-    "password": "SQLpassword",
-    "database": "roadmap_planner",
-    "host": "127.0.0.1",
+    "username": "qw5wuk6shaonk3dg",
+    "password": "p6ki1vmrjqj4wzoq",
+    "database": "nxjo80o2n9ztnhz5",
+    "host": "mkorvuw3sl6cu9ms.cbetxkdyhwsb.us-east-1.rds.amazonaws.com",
     "dialect": "mysql"
   },
   "test": {
-    "username": "root",
-    "password": "mysql",
-    "database": "roadmap_planner",
-    "host": "127.0.0.1",
+    "username": "qw5wuk6shaonk3dg",
+    "password": "p6ki1vmrjqj4wzoq",
+    "database": "nxjo80o2n9ztnhz5",
+    "host": "mkorvuw3sl6cu9ms.cbetxkdyhwsb.us-east-1.rds.amazonaws.com",
     "dialect": "mysql"
   },
   "production": {
-    "username": "root",
-    "password": "mysql",
-    "database": "roadmap_planner",
-    "host": "127.0.0.1",
+    "username": "qw5wuk6shaonk3dg",
+    "password": "p6ki1vmrjqj4wzoq",
+    "database": "nxjo80o2n9ztnhz5",
+    "host": "mkorvuw3sl6cu9ms.cbetxkdyhwsb.us-east-1.rds.amazonaws.com",
     "dialect": "mysql"
   }
 }
