@@ -9,7 +9,7 @@
                 Due Date: {{dueDate }}</p>
                 <p>Description: {{description}}</p>
                 <!-- !! data-complete is backwards because that's the information to be sent to the server -->
-                <button type="button" class="btn btn-{{#if completed}}danger{{else}}success{{/if}}" id="complete" data-complete="{{#if completed}}0{{else}}1{{/if}}" data-id="{{id}}">Mark ass {{#if completed}}incomplete{{else}}complete{{/if}}</button>
+                <button type="button" class="btn btn-{{#if completed}}danger{{else}}success{{/if}}" id="complete" data-complete="{{#if completed}}0{{else}}1{{/if}}" data-id="{{id}}">Mark as {{#if completed}}incomplete{{else}}complete{{/if}}</button>
                 <a href="/projects/{{ProjectId}}" class="btn btn-primary">Return to Project</a>
             </div>
         </div>
