@@ -81,9 +81,20 @@ $( "#submitLogin" ).on( "click", function(){
       //console.log('RESPONSE', response);
       //console.log( getUserByEmail );
       getUserByEmail( response.user.email, function( pData ){
-        // console.log( pData );
-        localStorage.setItem( 'currentUser', JSON.stringify( pData ) );
-        window.location.assign( `/userDashboard` );
+        if( pData ){
+          localStorage.setItem( 'currentUser', JSON.stringify( pData ) );
+          window.location.assign( `/userDashboard` );
+        } else {
+          console.log(  response );
+
+          addUser( {
+            name: response.user.email,
+            email: response.user.email
+          }, function( pData ){
+            localStorage.setItem( 'currentUser', JSON.stringify( pData ) );
+            window.location.assign( `/userDashboard` );
+          } );
+        }
       } );
     }).catch(function(){
       // $("#password").addClass("invalid");
