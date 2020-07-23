@@ -1,23 +1,22 @@
 {
   "development": {
-    "username": "qw5wuk6shaonk3dg",
-    "password": "p6ki1vmrjqj4wzoq",
-    "database": "nxjo80o2n9ztnhz5",
-    "host": "mkorvuw3sl6cu9ms.cbetxkdyhwsb.us-east-1.rds.amazonaws.com",
+    "username": "root",
+    "password": "SQLpassword",
+    "database": "roadmap_planner",
+    "host": "127.0.0.1",
+    "port": 3306,
     "dialect": "mysql"
   },
   "test": {
-    "username": "qw5wuk6shaonk3dg",
-    "password": "p6ki1vmrjqj4wzoq",
-    "database": "nxjo80o2n9ztnhz5",
-    "host": "mkorvuw3sl6cu9ms.cbetxkdyhwsb.us-east-1.rds.amazonaws.com",
+    "username": "root",
+    "password": null,
+    "database": "database_test",
+    "host": "127.0.0.1",
+    "port": 3306,
     "dialect": "mysql"
   },
   "production": {
-    "username": "qw5wuk6shaonk3dg",
-    "password": "p6ki1vmrjqj4wzoq",
-    "database": "nxjo80o2n9ztnhz5",
-    "host": "mkorvuw3sl6cu9ms.cbetxkdyhwsb.us-east-1.rds.amazonaws.com",
+    "use_env_variable": "JAWS_DB",
     "dialect": "mysql"
   }
 }
