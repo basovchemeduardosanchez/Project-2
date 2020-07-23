@@ -36,6 +36,7 @@ module.exports = function( app ){
         }).then (function (pResults){
             lTasks = [];
             pResults.map(task => {
+                
                 var hours = hoursRemaining(task.dueDate);
                 if(hours <= 0){
                 task.setDataValue("overdue", true);
@@ -50,9 +51,10 @@ module.exports = function( app ){
                     task.setDataValue("oneWeek", true);
                 }
                 lTasks.push(task.dataValues);
-                console.log(hours);
+                // console.log(hours);
+                
             });
-            console.log(lProjects)
+            // console.log("line56", lProjects)
             res.render( 'userDashboard', {projects:lProjects, tasks: lTasks});
         });
     });
