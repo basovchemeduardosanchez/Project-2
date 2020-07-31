@@ -1,12 +1,1 @@
-const moment = require ("moment");
-
-function hoursRemaining(due) {
-    var eventdate = moment(due);
-    var tohoursdate = moment();
-    var hoursUntilEvent = eventdate.diff(tohoursdate, 'hours');
-    return hoursUntilEvent;
- 
-}
-module.exports = hoursRemaining;
-
-
+const moment=require("moment");function hoursRemaining(a){var b=moment(a),c=moment(),d=b.diff(c,"hours");return d}module.exports=hoursRemaining;
