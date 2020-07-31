@@ -1,5 +1,6 @@
 const express = require( 'express' );
 const exphbs = require( 'express-handlebars' );
+const compression = require( 'compression' );
 //Moments
 const moment = require('moment');
 
@@ -16,6 +17,8 @@ app.use( express.static( "public" ) );
 app.use( express.urlencoded( { extended: true } ) );
 // Enable parsing of JSON request
 app.use( express.json() );
+// Enable GZip Compression
+app.use( compression() );
 // !SECTION Express Setup
 
 //Enable access to the images folder
